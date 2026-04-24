@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O'Connor & Sons Electric — Palo Alto, CA</title>
+  <meta name="description" content="O'Connor & Sons Electric — Licensed electrical contractors serving Palo Alto, CA. Commercial, Residential, Remodeling. License #513626, Class C10." />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #F5C518;
+      --yellow-dim: #c49c10;
+      --dark: #0f0f0f;
+      --dark-mid: #161616;
+      --dark-card: #1c1c1c;
+      --dark-border: #2a2a2a;
+      --white: #f0ede6;
+      --muted: #7a7a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(15,15,15,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      line-height: 1.1;
+    }
+    .nav-logo span { color: var(--yellow); }
+    .nav-logo small {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow) !important;
+      color: var(--dark) !important;
+      padding: 0.4rem 1.1rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--yellow-dim) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 75% 45%, rgba(245,197,24,0.055) 0%, transparent 65%),
+        #0f0f0f;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(245,197,24,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,197,24,0.035) 1px, transparent 1px);
+      background-size: 55px 55px;
+    }
+    .hero-slash {
+      position: absolute;
+      top: 0; right: 22%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(245,197,24,0.15) 40%, rgba(245,197,24,0.08) 70%, transparent);
+      transform: rotate(8deg);
+    }
+
+    .hero-content { position: relative; max-width: 720px; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.5rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px; height: 2px;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(3.8rem, 9vw, 7.5rem);
+      font-weight: 800;
+      line-height: 0.93;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+    h1 em { font-style: normal; color: var(--yellow); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.75;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--yellow);
+      color: var(--dark);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--yellow-dim); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      border: 1px solid var(--dark-border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* hero floating card */
+    .hero-card {
+      position: absolute;
+      right: 2.5rem;
+      bottom: 6rem;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-top: 3px solid var(--yellow);
+      border-radius: 4px;
+      padding: 1.75rem 2rem;
+      min-width: 220px;
+    }
+    .hero-card-stat { margin-bottom: 1rem; }
+    .hero-card-stat:last-child { margin-bottom: 0; }
+    .hero-card-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .hero-card-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--dark-mid);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 3rem;
+      border-right: 1px solid var(--dark-border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+      max-width: 100px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2.5rem; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    /* ── SERVICES ── */
+    .services-wrap { max-width: 1080px; margin: 0 auto; }
+
+    .services-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .services-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 380px;
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dark-border);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .svc {
+      background: var(--dark-card);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .svc:hover { background: #222; }
+    .svc-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      background: rgba(245,197,24,0.05);
+    }
+    .svc h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .svc p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--dark-mid);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .about-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .quote-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .quote-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 50px; height: 3px;
+      background: var(--yellow);
+    }
+    .quote-mark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: rgba(245,197,24,0.15);
+      line-height: 0.7;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .quote-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .quote-sig {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .quote-sig strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .license-badge {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .license-icon {
+      width: 36px; height: 36px;
+      background: rgba(245,197,24,0.1);
+      border: 1px solid rgba(245,197,24,0.2);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .license-text { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .license-text strong { color: var(--white); font-weight: 600; }
+
+    .about-right p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .checklist {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .checklist li::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .reviews-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .review-platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .platform-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 1.5rem 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .platform-card:hover {
+      border-color: rgba(245,197,24,0.4);
+      background: #222;
+    }
+    .platform-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+    .platform-action {
+      font-size: 0.7rem;
+      color: var(--yellow);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap { max-width: 1080px; margin: 0 auto; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .ci-icon {
+      width: 38px; height: 38px;
+      background: rgba(245,197,24,0.07);
+      border: 1px solid rgba(245,197,24,0.18);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .ci-text strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.25rem;
+    }
+    .ci-text span, .ci-text a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      line-height: 1.5;
+    }
+    .ci-text a:hover { color: var(--yellow); }
+
+    .map-embed {
+      margin-top: 2rem;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--dark-border);
+    }
+    .map-embed iframe {
+      display: block;
+      width: 100%;
+      height: 200px;
+      border: none;
+      filter: grayscale(1) invert(0.92) contrast(1.1);
+    }
+
+    /* FORM */
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input, textarea, select {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 3px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.875rem;
+      padding: 0.7rem 0.9rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: rgba(245,197,24,0.5); }
+    textarea { resize: vertical; min-height: 110px; }
+    select option { background: #1c1c1c; }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: -0.25rem;
+    }
+
+    .btn-submit {
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn-submit:hover { background: var(--yellow-dim); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark-mid);
+      border-top: 1px solid var(--dark-border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--yellow); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--yellow); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links li:not(:last-child) { display: none; }
+      h1 { font-size: 3.5rem; }
+      .hero-card { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .review-platforms-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stat { padding: 0.5rem 1.5rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0.9rem 1.25rem; }
+      .hero { padding: 6rem 1.25rem 3rem; }
+      section { padding: 4rem 1.25rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats-bar { gap: 0; }
+      .stat { border-right: none; border-bottom: 1px solid var(--dark-border); width: 100%; justify-content: center; }
+      .stat:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    O'Connor <span>&</span> Sons Electric
+    <small>Palo Alto, CA · Lic. #513626</small>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:6507401121" class="nav-cta">650.740.1121</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-slash"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Palo Alto, CA · C10 Licensed Contractors</p>
+    <h1>Commercial.<br/>Residential.<br/><em>Remodeling.</em></h1>
+    <p class="hero-desc">
+      Licensed electrical contractors serving the Palo Alto area. Family-owned for over thirty years. Bonded and insured.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:6507401121" class="btn-primary">Call 650.740.1121</a>
+      <a href="#contact" class="btn-ghost">Request a Quote</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-stat">
+      <div class="hero-card-num">30+</div>
+      <div class="hero-card-label">Years in Palo Alto</div>
+    </div>
+    <div class="hero-card-stat">
+      <div class="hero-card-num">C10</div>
+      <div class="hero-card-label">License #513626</div>
+    </div>
+    <div class="hero-card-stat">
+      <div class="hero-card-num">4+</div>
+      <div class="hero-card-label">Yrs Trade School</div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div>
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Years Family-Owned</div>
+    </div>
+  </div>
+  <div class="stat">
+    <div>
+      <div class="stat-num">C10</div>
+      <div class="stat-label">License #513626</div>
+    </div>
+  </div>
+  <div class="stat">
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Bonded & Insured</div>
+    </div>
+  </div>
+  <div class="stat">
+    <div>
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Yrs European Trade School</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section>
+  <div class="services-wrap">
+    <div class="services-head">
+      <div>
+        <p class="section-label">What We Do</p>
+        <h2>Services</h2>
+      </div>
+      <p class="services-sub">Detail to every job, big or small. We treat your home like ours.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-icon">🏢</div>
+        <h3>Commercial</h3>
+        <p>Commercial electrical work throughout the Palo Alto area.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🏠</div>
+        <h3>Residential</h3>
+        <p>Residential electrical services for homes across Palo Alto.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">🔧</div>
+        <h3>Remodeling</h3>
+        <p>Electrical work for home and commercial remodeling projects.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">⚡</div>
+        <h3>Troubleshooting</h3>
+        <p>Experts in troubleshooting electrical issues — fast, responsive, reliable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div>
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">Thanks again for trusting us with your electrical issues. As always, we appreciate the business — especially since we are a small family enterprise.</p>
+        <div class="quote-sig">
+          <strong>Tom O'Connor</strong>
+          O'Connor & Sons Electric
+        </div>
+      </div>
+      <div class="license-badge">
+        <div class="license-icon">📋</div>
+        <div class="license-text">
+          <strong>Licensed Electrical Contractor</strong>
+          CA License #513626 · Class C10 · Bonded & Insured
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <p class="section-label">About</p>
+      <h2>Family-Owned<br/>for Over<br/>Thirty Years</h2>
+      <p>
+        O'Connor & Sons Electric is a small family enterprise that has served the Palo Alto area for over thirty years. Tom O'Connor is European-trained with 4+ years of electrical trade school.
+      </p>
+      <p style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 600; color: var(--yellow); font-style: italic;">
+        "Not the cheapest — just the best and well-worth the call."
+      </p>
+      <ul class="checklist">
+        <li>Experts in troubleshooting electrical issues</li>
+        <li>Fast, responsive, and reliable service</li>
+        <li>Detail to every job, big or small — we treat your home like ours</li>
+        <li>We resolve your problems as expediently as possible</li>
+        <li>Family-owned business for over thirty years in the Palo Alto area</li>
+        <li>European-trained; 4+ years of electrical trade school</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-wrap">
+    <p class="section-label">Reviews</p>
+    <h2>Check Us Out</h2>
+    <p class="reviews-sub">See what customers are saying on the platforms below.</p>
+    <div class="review-platforms-grid">
+      <a href="http://www.yelp.com/biz/oconnor-and-sons-electric-palo-alto" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-name">Yelp</div>
+        <div class="platform-action">Read Reviews →</div>
+      </a>
+      <a href="https://www.google.com/search?q=O%27Connor+%26+Sons+Electric+Palo+Alto" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-name">Google</div>
+        <div class="platform-action">Read Reviews →</div>
+      </a>
+      <a href="https://nextdoor.com/pages/oconnor-son-electric-palo-alto-ca/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-name">Nextdoor</div>
+        <div class="platform-action">Read Reviews →</div>
+      </a>
+      <a href="https://www.bbb.org/us/ca/palo-alto/profile/electrician/oconnor-sons-electric-1216-244092" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-name">BBB</div>
+        <div class="platform-action">View Profile →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section style="background: var(--dark-mid); border-top: 1px solid var(--dark-border);">
+  <div class="contact-wrap" id="contact">
+    <p class="section-label">Book a Job</p>
+    <h2>Get in Touch</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="ci-icon">📞</div>
+            <div class="ci-text">
+              <strong>Phone</strong>
+              <a href="tel:6507401121">650.740.1121</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📧</div>
+            <div class="ci-text">
+              <strong>Email</strong>
+              <a href="mailto:oconnorelectric@comcast.net">oconnorelectric@comcast.net</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div class="ci-text">
+              <strong>Address</strong>
+              <span>849 Clara Drive<br/>Palo Alto, CA 94303</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📋</div>
+            <div class="ci-text">
+              <strong>License</strong>
+              <span>#513626 · Class C10<br/>Bonded & Insured</span>
+            </div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://maps.google.com/maps?q=849%20Clara%20Drive%2C%20Palo%20Alto%2C%20CA%2094303&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="First name" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Last name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="(650) 555-0000" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="service">Type of Work</label>
+          <select id="service">
+            <option value="">Select…</option>
+            <option>Commercial</option>
+            <option>Residential</option>
+            <option>Remodeling</option>
+            <option>Troubleshooting</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="msg">Project Details</label>
+          <textarea id="msg" placeholder="Describe your project or electrical issue..."></textarea>
+        </div>
+        <p class="form-note">Submissions are sent to oconnorelectric@comcast.net</p>
+        <button type="submit" class="btn-submit">Send Inquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">O'Connor <span>&</span> Sons Electric</div>
+  <p class="footer-copy">849 Clara Drive, Palo Alto, CA 94303 · Lic. #513626, C10 · Bonded & Insured</p>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:6507401121">650.740.1121</a>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#2d7a3a';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+  }
+</script>
+
+</body>
+</html>
